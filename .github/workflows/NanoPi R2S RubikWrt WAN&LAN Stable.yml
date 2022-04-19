@@ -83,6 +83,8 @@ jobs:
         chmod +x scripts/*.sh
         # cat configs/docker-support.config >> $OPENWRTROOT/.config
         cd $OPENWRTROOT
+        export BUILDDIR=$OPENWRTROOT
+        echo "BUILDDIR=$OPENWRTROOT" >> $GITHUB_ENV
         ../$DIY_SH
         ../scripts/preset-clash-core.sh armv8
         ../scripts/preset-terminal-tools.sh
