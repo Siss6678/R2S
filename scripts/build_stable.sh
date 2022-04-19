@@ -151,6 +151,20 @@ pushd po2lmo
 make && sudo make install
 popd
 
+### Credit to helmiau ###
+# Disable kmod-fs-virtiofs for non-x86
+sed -i "s/KCONFIG:=CONFIG_VIRTIO_FS/KCONFIG:=CONFIG_DEF_VIRTIO_FS/g" $BUILDDIR/package/kernel/linux/modules/fs.mk
+sed -i "s/CONFIG_VIRTIO_MENU=y/CONFIG_VIRTIO_MENU=n/g" $BUILDDIR/target/linux/generic/config-5.4
+sed -i "s/CONFIG_VIRTIO_MENU=y/CONFIG_VIRTIO_MENU=n/g" $BUILDDIR/target/linux/generic/config-5.10
+sed -i "s/CONFIG_VIRTIO_MENU=y/CONFIG_VIRTIO_MENU=n/g" $BUILDDIR/target/linux/generic/config-5.15
+# Remove kmod-9pnet
+sed -i "s|CONFIG_NET_9P \|CONFIG_NET_9P=n \|g" $BUILDDIR/package/kernel/linux/modules/netsupport.mk
+sed -i "s|CONFIG_NET_9P_VIRTIO|CONFIG_NET_9P_VIRTIO=n|g" $BUILDDIR/package/kernel/linux/modules/netsupport.mk
+sed -i "/KERNEL_PATCHVER=/c\KERNEL_PATCHVER=5.4" $BUILDDIR/target/linux/rockchip/Makefile
+sed -i "/KERNEL_TESTING_PATCHVER=/c\KERNEL_TESTING_PATCHVER=5.10" $BUILDDIR/target/linux/rockchip/Makefile
+### Credit to helmiau ###
+
+
 # Swap LAN WAN  
 sed -i 's,"eth1" "eth0","eth0" "eth1",g' target/linux/rockchip/armv8/base-files/etc/board.d/02_network  
 sed -i "s,'eth1' 'eth0','eth0' 'eth1',g" target/linux/rockchip/armv8/base-files/etc/board.d/02_network
