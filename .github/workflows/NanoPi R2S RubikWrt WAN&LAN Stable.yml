@@ -1,6 +1,6 @@
 name: Build NanoPi R2S RubikWrt WAN/LAN Stable
 on:
-#  workflow_dispatch:
+  workflow_dispatch:
 #  schedule:
 #    - cron: 0 16 * * *
 env:
