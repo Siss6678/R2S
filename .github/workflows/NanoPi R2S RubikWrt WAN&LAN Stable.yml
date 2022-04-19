@@ -1,8 +1,8 @@
 name: Build NanoPi R2S RubikWrt WAN/LAN Stable
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: 0 16 * * *
+#on:
+#  workflow_dispatch:
+#  schedule:
+#    - cron: 0 16 * * *
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
