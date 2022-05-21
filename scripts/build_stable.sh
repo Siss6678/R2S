@@ -188,10 +188,10 @@ wget https://raw.githubusercontent.com/thomaswcy/R2S/main/banner
 popd
 
 # Replace lede hostapd with immortalwrt source
-pushd package/network/services
-rm -rf hostapd
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/network/services/hostapd
-popd
+#pushd package/network/services
+#rm -rf hostapd
+#svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/network/services/hostapd
+#popd
 
 # Add CPUInfo
 pushd package/lean/autocore/files/arm/sbin
